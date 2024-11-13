@@ -41,7 +41,7 @@ const allOperatorButtons = document.querySelectorAll('.operator');
 let expression = "";
 
 allNumberButtons.forEach((button) => {
-    if (button.textContent !== "=") {
+    if (button.textContent !== "=" && button.textContent !== ".") {
         button.addEventListener("click", () => {
             display.textContent += button.textContent;
             expression = display.textContent;
@@ -49,8 +49,17 @@ allNumberButtons.forEach((button) => {
     }
 });
 
+const dotButton = allNumberButtons[allNumberButtons.length - 3];
+
+dotButton.addEventListener("click", () => {
+    if (!display.textContent.includes(".")) {
+        display.textContent += dotButton.textContent;
+        expression = display.textContent;
+    }
+});
+
 allOperatorButtons.forEach((button) => {
-    if (button.textContent !== "AC") {
+    if (button.textContent !== "=") {
         button.addEventListener("click", () => {
             display.textContent += ` ${button.textContent} `;
             expression = display.textContent;
@@ -77,5 +86,7 @@ equalButton.addEventListener("click", () => {
         let secondValue = +expressionArray[i + 1];
         endValue = operate(endValue, operator, secondValue);
     }
+    const ROUND_VALUE = 100000 //5 decimal places
+    endValue = Math.floor(endValue * ROUND_VALUE) / ROUND_VALUE;
     display.textContent = endValue;
 });
