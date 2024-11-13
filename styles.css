@@ -16,10 +16,57 @@ h1 {
     margin-bottom: 50px;
 }
 
+button {
+    font-size: 40px;
+}
+
 .container {
     border: solid 1px black;
     display: flex;
     flex-direction: column;
     width: 600px;
     height: 800px;
+    justify-items: center;
+}
+
+.display {
+    flex: 1;
+    background-color: lightskyblue;
+    padding-top: 80px;
+    font-size: 40px;
+    text-align: end;
+}
+
+.buttons {
+    padding-top : 12px;
+    padding-bottom: 12px;
+    flex: 4;
+    display: flex;
+    margin-bottom: 50px;
+    background-color: lightcoral;
+}
+
+.num-pad {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 40px;
+    gap: 8px;
+    
+}
+
+.number {
+    width: 100px;
+}
+
+.operators {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-right: 40px;
+}
+
+.operator {
+    flex: 1;
 }
