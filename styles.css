@@ -18,45 +18,51 @@ h1 {
 
 button {
     font-size: 40px;
+    border-radius: 12px;
+    background-color: rgb(172, 172, 172);
 }
 
 .container {
     border: solid 1px black;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    width: 600px;
-    height: 800px;
+    width: 420px;
+    height: 600px;
     justify-items: center;
+    padding: 12px;
+    background-color: rgb(54, 48, 48);
 }
 
-.display {
+.display-container {
     flex: 1;
-    background-color: lightskyblue;
-    padding-top: 80px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    border: solid 1px rgb(0,0,0);
+    border-radius: 12px;
     font-size: 40px;
     text-align: end;
+    padding: 12px;
+    background-color: rgb(255,255,255);
+    margin: 12px;
 }
 
 .buttons {
-    padding-top : 12px;
-    padding-bottom: 12px;
-    flex: 4;
+    padding: 12px;
+    flex: 5;
     display: flex;
-    margin-bottom: 50px;
-    background-color: lightcoral;
 }
 
 .num-pad {
     flex: 3;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 40px;
     gap: 8px;
-    
 }
 
 .number {
-    width: 100px;
+    width: 70px;
 }
 
 .operators {
@@ -64,9 +70,13 @@ button {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-right: 40px;
 }
 
 .operator {
     flex: 1;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 18px;
 }
