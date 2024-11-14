@@ -20,11 +20,6 @@ button {
     font-size: 40px;
     border-radius: 12px;
     border: solid 1px rgb(0,0,0);
-    background-color: rgb(172, 172, 172);
-}
-
-button:active {
-    background-color: rgb(138, 138, 138)
 }
 
 .container {
@@ -68,9 +63,12 @@ button:active {
 .extra-buttons {
     display: flex;
     gap: 8px;
+    flex: .7;
+    margin: 0px 8px 8px 8px;
 }
 
 .extra {
+    background-color:rgb(172, 172, 172);
     flex: 1;
 }
 
@@ -83,6 +81,7 @@ button:active {
 }
 
 .number {
+    background-color: rgb(117, 117, 117);
     width: 75px;
 }
 

@@ -41,7 +41,7 @@ const allOperatorButtons = document.querySelectorAll('.operator');
 let expression = "";
 
 allNumberButtons.forEach((button) => {
-    if (button.textContent !== "=" && button.textContent !== ".") {
+    if (button.textContent !== ".") {
         button.addEventListener("click", () => {
             display.textContent += button.textContent;
             expression = display.textContent;
@@ -49,7 +49,7 @@ allNumberButtons.forEach((button) => {
     }
 });
 
-const dotButton = allNumberButtons[allNumberButtons.length - 3];
+const dotButton = document.querySelector(".dot");
 
 dotButton.addEventListener("click", () => {
     if (!display.textContent.includes(".")) {
@@ -59,25 +59,53 @@ dotButton.addEventListener("click", () => {
 });
 
 allOperatorButtons.forEach((button) => {
+    console.log(expression.substring(expression.length - 1));
     if (button.textContent !== "=") {
         button.addEventListener("click", () => {
-            display.textContent += ` ${button.textContent} `;
-            expression = display.textContent;
+            if (expression.substring(expression.length - 1) !== " ") {
+                display.textContent += ` ${button.textContent} `;
+                expression = display.textContent;
+            }
         });
     }
 });
 
-const clearButton = allOperatorButtons[0];
+const clearButton = document.querySelector('.clear');
 
 clearButton.addEventListener("click", () => {
     display.textContent = "";
     expression = "";
 });
 
+const deleteButton = document.querySelector(".delete");
+
+deleteButton.addEventListener("click", () => {
+    let deleteAmount;
+    let lastChar = expression[expression.length - 1];
+    if (lastChar === " ") {
+        deleteAmount = 2;
+    } else {
+        deleteAmount = 1;
+    }
+    display.textContent = display.textContent.substring(0, display.textContent.length - deleteAmount);
+    expression = expression.substring(0, expression.length - deleteAmount);
+})
+
 const equalButton = document.querySelector(".equal");
 
 equalButton.addEventListener("click", () => {
-    
+    let lastChar = expression[expression.length - 1];
+    if (lastChar === " ") {
+        let pastOperator = expression[expression.length - 2];
+        if (pastOperator === "*" || pastOperator === "/") {
+            expression += "1";
+        } else {
+            expression += "0";
+        }
+    } else if (lastChar === ".") {
+        expression += "0";
+    }
+
     let expressionArray = expression.split(" ");
     let endValue = +expressionArray[0];
     console.log({expressionArray});
@@ -86,6 +114,7 @@ equalButton.addEventListener("click", () => {
         let secondValue = +expressionArray[i + 1];
         endValue = operate(endValue, operator, secondValue);
     }
+
     const ROUND_VALUE = 100000 //5 decimal places
     endValue = Math.floor(endValue * ROUND_VALUE) / ROUND_VALUE;
     display.textContent = endValue;
